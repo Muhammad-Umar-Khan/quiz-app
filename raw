@@ -1,0 +1,31 @@
+
+// function makeOption() {
+//   for (let i = 0; i < questions.length; i++) {
+//     questions[i].options.map((option) => {
+//       let radioBtn = document.createElement("input");
+//       radioBtn.type = "radio";
+//       radioBtn.value = option.value;
+//       radioBtn.name = option.name;
+//       options.appendChild(radioBtn);
+//     }); //console.log(option.value)
+//   }
+// }
+
+
+// questions.map((question) => {
+    //   let newP = document.createElement("p");
+    //   newP.innerText = question.q;
+    //   questionContainer.appendChild(newP);
+    //   question.options.map((option) => {
+    //     questionHtml += '<input type="radio"  name="answer" ';
+    //     questionHtml += 'value="' + option.id + '">';
+    //     questionHtml += option.value + "<br>";
+    //   }); //console.log(option.name)
+    //   options.innerHTML = questionHtml;
+    // });
+    
+    // console.log(questions[0].options.map((option) => console.log(option.a)));
+    
+
+    // "<input type=" + radio + "name=" + option.name + "id" + option.id + "/>";
+    // "<label for=" + option.id + ">" + option.name + "</label>";
