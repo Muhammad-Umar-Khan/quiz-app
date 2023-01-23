@@ -131,25 +131,52 @@ for (let i = 0; i < questions.length; i++) {
   }
 }
 
-let totalScore = 0;
+const button = document.getElementById("submit_btn");
+button.disabled = true;
 
-function getSelectedValues() {
+function calculateScore() {
+  let totalScore = 0;
   let inputValues = document.getElementsByName("question-1-options");
   for (let j = 0; j < inputValues.length; j++) {
-    if (inputValues[j].checked && inputValues[j].value == "Mark Zuckerberg") {
+    if (inputValues[j].checked && inputValues[j].value === "Mark Zuckerberg")
       totalScore += 1;
-    }
   }
   for (let i = 0; i < 9; i++) {
     let allInputs = document.getElementsByName(i);
     for (let k = 0; k < allInputs.length; k++) {
       if (
         allInputs[k].checked &&
-        allInputs[k].value == questions[i].correctAnswer
+        allInputs[k].value === questions[i].correctAnswer
       ) {
         totalScore += 1;
       }
+      // }
+    }
+    console.log("total score", totalScore);
+    console.log(`Your total score is ${totalScore}/10`);
+  }
+}
+
+function checkAllSelected() {
+  let totalCount = 0;
+
+  let inputValues = document.getElementsByName("question-1-options");
+  for (let j = 0; j < inputValues.length; j++) {
+    if (inputValues[j].checked) {
+      totalCount = totalCount + 1;
     }
   }
-  console.log(`Your total score is ${totalScore}/10`);
+
+  for (let i = 0; i < 9; i++) {
+    let allInputs = document.getElementsByName(i);
+    for (let k = 0; k < allInputs.length; k++) {
+      if (allInputs[k].checked) {
+        totalCount++;
+      }
+    }
+  }
+  console.log("totalCoutn", totalCount);
+  if (totalCount >= 10) {
+    button.disabled = false;
+  }
 }

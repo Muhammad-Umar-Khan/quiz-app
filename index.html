@@ -18,6 +18,7 @@
             name="question-1-options"
             id="question-1-option-1"
             value="Mark Zuckerberg"
+            onclick="checkAllSelected()"
           />
           <label for="question-1-option-1" id="label-1">Mark Zuckerberg</label>
           <input
@@ -25,6 +26,7 @@
             name="question-1-options"
             id="question-1-option-2"
             value="Elon Musk"
+            onclick="checkAllSelected()"
           />
           <label for="question-1-option-2" id="label-2">Elon Musk</label>
           <input
@@ -32,6 +34,7 @@
             name="question-1-options"
             id="question-1-option-3"
             value="Jeff Bezos"
+            onclick="checkAllSelected()"
           />
           <label for="question-1-option-3" id="label-3">Jeff Bezos</label>
           <input
@@ -39,12 +42,12 @@
             name="question-1-options"
             id="question-1-option-4"
             value="Tim cook"
-
+            onclick="checkAllSelected()"
           />
           <label for="question-1-option-4" id="label-4">Tim Cook</label>
         </div>
       </div>
-        <button onclick="getSelectedValues()">Submit</button>
+      <button id="submit_btn" onclick="calculateScore()">Submit</button>
     </main>
     <script src="index.js"></script>
   </body>
