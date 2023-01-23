@@ -108,9 +108,21 @@ const questions = [
   },
 ];
 
+let radiogroups_names = [
+  "prime-minister",
+  "computer-parts",
+  "palindrom",
+  "popular-networking-site",
+  "more-processors",
+  "WWW-stands-for",
+  "MS-DOS",
+  "disks-technology",
+  "land-of-thunder-bolts",
+];
+
 let questions_container = document.getElementById("questions");
 let question_text = document.getElementById("question-text");
-let option1 = document.getElementById("question-1-option-1");
+let option1 = document.getElementById("question-1-option-01");
 let labelText = document.getElementById("label-1");
 
 for (let i = 0; i < questions.length; i++) {
@@ -120,18 +132,21 @@ for (let i = 0; i < questions.length; i++) {
   questions_container.appendChild(question_clone);
   for (let j = 0; j < questions[i].options.length; j++) {
     let option1Clone = option1.cloneNode(true);
-    option1Clone.name = i;
+    option1Clone.name = radiogroups_names[i];
     option1Clone.id = questions[i].options[j].value;
     option1Clone.value = questions[i].options[j].value;
     let labelTextClone = labelText.cloneNode(true);
     labelTextClone.innerText = questions[i].options[j].value;
     labelTextClone.for = i;
-    question_clone.appendChild(option1Clone);
+    labelTextClone.appendChild(option1Clone);
     question_clone.appendChild(labelTextClone);
+    // question_clone.appendChild(option1Clone);
+    // question_clone.appendChild(labelTextClone);
   }
 }
 
 const button = document.getElementById("submit_btn");
+const result = document.getElementById("result");
 button.disabled = true;
 
 function calculateScore() {
@@ -142,7 +157,7 @@ function calculateScore() {
       totalScore += 1;
   }
   for (let i = 0; i < 9; i++) {
-    let allInputs = document.getElementsByName(i);
+    let allInputs = document.getElementsByName(radiogroups_names[i]);
     for (let k = 0; k < allInputs.length; k++) {
       if (
         allInputs[k].checked &&
@@ -152,8 +167,7 @@ function calculateScore() {
       }
       // }
     }
-    console.log("total score", totalScore);
-    console.log(`Your total score is ${totalScore}/10`);
+    result.innerText = `Your total score is ${totalScore}/10`;
   }
 }
 
@@ -168,7 +182,7 @@ function checkAllSelected() {
   }
 
   for (let i = 0; i < 9; i++) {
-    let allInputs = document.getElementsByName(i);
+    let allInputs = document.getElementsByName(radiogroups_names[i]);
     for (let k = 0; k < allInputs.length; k++) {
       if (allInputs[k].checked) {
         totalCount++;

@@ -13,40 +13,52 @@
           <h1 id="question-text">Meta CEO is?</h1>
         </div>
         <div id="options">
-          <input
-            type="radio"
-            name="question-1-options"
-            id="question-1-option-1"
-            value="Mark Zuckerberg"
-            onclick="checkAllSelected()"
-          />
-          <label for="question-1-option-1" id="label-1">Mark Zuckerberg</label>
-          <input
-            type="radio"
-            name="question-1-options"
-            id="question-1-option-2"
-            value="Elon Musk"
-            onclick="checkAllSelected()"
-          />
-          <label for="question-1-option-2" id="label-2">Elon Musk</label>
-          <input
-            type="radio"
-            name="question-1-options"
-            id="question-1-option-3"
-            value="Jeff Bezos"
-            onclick="checkAllSelected()"
-          />
-          <label for="question-1-option-3" id="label-3">Jeff Bezos</label>
-          <input
-            type="radio"
-            name="question-1-options"
-            id="question-1-option-4"
-            value="Tim cook"
-            onclick="checkAllSelected()"
-          />
-          <label for="question-1-option-4" id="label-4">Tim Cook</label>
+          <label id="label-1">
+            Mark Zuckerberg
+            <input
+              type="radio"
+              name="question-1-options"
+              id="question-1-option-01"
+              value="Mark Zuckerberg"
+              onclick="checkAllSelected()"
+            />
+          </label>
+
+          <label id="label-2">
+            Elon Musk
+            <input
+              type="radio"
+              name="question-1-options"
+              id="question-1-option-2"
+              value="Elon Musk"
+              onclick="checkAllSelected()"
+            />
+          </label>
+
+          <label id="label-3">
+            Jeff Bezos
+            <input
+              type="radio"
+              name="question-1-options"
+              id="question-1-option-3"
+              value="Jeff Bezos"
+              onclick="checkAllSelected()"
+            />
+          </label>
+
+          <label id="label-4">
+            Tim Cook
+            <input
+              type="radio"
+              name="question-1-options"
+              id="question-1-option-4"
+              value="Tim cook"
+              onclick="checkAllSelected()"
+            />
+          </label>
         </div>
       </div>
+      <h1 id="result">""</h1>
       <button id="submit_btn" onclick="calculateScore()">Submit</button>
     </main>
     <script src="index.js"></script>
