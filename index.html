@@ -10,11 +10,41 @@
     <main>
       <div id="questions">
         <div id="question">
-          <h1 id="question-text">Question text will go here</h1>
-          <input type="radio" name="" id="question-1-option-1" />
-          <label for="question-1-option-1" id="label-1"></label>
+          <h1 id="question-text">Meta CEO is?</h1>
+        </div>
+        <div id="options">
+          <input
+            type="radio"
+            name="question-1-options"
+            id="question-1-option-1"
+            value="Mark Zuckerberg"
+          />
+          <label for="question-1-option-1" id="label-1">Mark Zuckerberg</label>
+          <input
+            type="radio"
+            name="question-1-options"
+            id="question-1-option-2"
+            value="Elon Musk"
+          />
+          <label for="question-1-option-2" id="label-2">Elon Musk</label>
+          <input
+            type="radio"
+            name="question-1-options"
+            id="question-1-option-3"
+            value="Jeff Bezos"
+          />
+          <label for="question-1-option-3" id="label-3">Jeff Bezos</label>
+          <input
+            type="radio"
+            name="question-1-options"
+            id="question-1-option-4"
+            value="Tim cook"
+
+          />
+          <label for="question-1-option-4" id="label-4">Tim Cook</label>
         </div>
       </div>
+        <button onclick="getSelectedValues()">Submit</button>
     </main>
     <script src="index.js"></script>
   </body>

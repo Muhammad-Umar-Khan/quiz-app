@@ -29,3 +29,204 @@
 
     // "<input type=" + radio + "name=" + option.name + "id" + option.id + "/>";
     // "<label for=" + option.id + ">" + option.name + "</label>";
+
+
+
+for (let question of questions) {
+    const question_text_clone = question_text.cloneNode(true);
+    question_text_clone.id = question?.id;
+    question_text_clone.innerText = question?.q;
+    document.getElementById("question").append(question_text_clone);
+    for (let option of question.options) {
+      let labelText = document.getElementById("label-1");
+      let option1Clone = option1.cloneNode(true);
+      option1Clone.name = option.name;
+      option1.value = option.value;
+      let labelTextClone = labelText.cloneNode(true);
+      labelTextClone.innerText = option.value;
+      question_container.appendChild(option1Clone);
+      question_container.appendChild(labelTextClone);
+    }
+  }
+
+
+
+
+
+
+  const questions = [
+    {
+      id: 1,
+      q: "Where is cogent labs?",
+      options: [
+        { id: 1, name: "Ali Town", value: "Ali Town" },
+        { id: 2, name: "Wapda Town", value: "Wapda Town" },
+        { id: 3, name: "Model Town", value: "Model Town" },
+        { id: 4, name: "None", value: "None" },
+      ],
+      correctAnswer: "facebook",
+    },
+    {
+      id: 2,
+      q: "Which one is not Meta product?",
+      options: [
+        { id: 1, name: "Facebook", value: "facebook" },
+        { id: 2, name: "WhatsApp", value: "whatsapp" },
+        { id: 3, name: "Instagaram", value: "instagram" },
+        { id: 4, name: "LinkedIn", value: "linkedin" },
+      ],
+      correctAnswer: "facebook",
+    },
+    {
+      id: 3,
+      q: "Parts of computer?",
+      options: [
+        { id: 1, name: "One", value: "One" },
+        { id: 2, name: "Two", value: "Two" },
+        { id: 3, name: "Five", value: "Five" },
+        { id: 4, name: "Three", value: "Three" },
+      ],
+      correctAnswer: "5",
+    },
+    {
+      id: 4,
+      q: "Which of the following is palindrom?",
+      options: [
+        { id: 1, name: "Car", value: "Car" },
+        { id: 2, name: "Madam", value: "Madam" },
+        { id: 3, name: "Ant", value: "Ant" },
+        { id: 4, name: "Three", value: "Three" },
+      ],
+      correctAnswer: "Madam",
+    },
+    {
+      id: 5,
+      q: "Today the most popular networking site is?",
+      options: [
+        { id: 1, name: "Twitter", value: "Twitter" },
+        { id: 2, name: "Facebook", value: "Facebook" },
+        { id: 3, name: "Instagaram", value: "Instagaram" },
+        { id: 4, name: "MySpace", value: "MySpace" },
+      ],
+      correctAnswer: "Facebook",
+    },
+  ];
+  
+  let questions_container = document.getElementById("questions");
+  let question_text = document.getElementById("question-text");
+  let option1 = document.getElementById("question-1-option-1");
+  let question_container = document.getElementById("question");
+  let labelText = document.getElementById("label-1");
+  
+  // question_text.innerText = questions[0].q;
+  // question_text.id = questions[0].id;
+  // option1.id = questions[0].options[0].id;
+  // option1.name = questions[0].options[0].name;
+  // option1.value = questions[0].options[0].value;
+  // labelText.innerText = questions[0].options[0].value;
+  
+  // let option2 = option1.cloneNode(true);
+  // option2.id = questions[0].options[1].id;
+  // option2.name = questions[0].options[1].name;
+  // option2.value = questions[0].options[1].value;
+  // question_container.appendChild(option2);
+  
+  // let label_2_text = labelText.cloneNode(true);
+  // label_2_text.innerText = questions[0].options[1].value;
+  // question_container.appendChild(label_2_text);
+  
+  // let option3 = option1.cloneNode(true);
+  // option3.id = questions[0].options[2].id;
+  // option3.name = questions[0].options[2].name;
+  // option3.value = questions[0].options[2].value;
+  // question_container.appendChild(option3);
+  
+  // let label_3_text = labelText.cloneNode(true);
+  // label_3_text.innerText = questions[0].options[2].value;
+  // question_container.appendChild(label_3_text);
+  
+  // let option4 = option1.cloneNode(true);
+  // option4.id = questions[0].options[3].id;
+  // option4.name = questions[0].options[3].name;
+  // option4.value = questions[0].options[3].value;
+  // question_container.appendChild(option4);
+  
+  // let label_4_text = labelText.cloneNode(true);
+  // label_4_text.innerText = questions[0].options[3].value;
+  // console.log(labelText.innerText);
+  // question_container.appendChild(label_4_text);
+  
+  // let labelTextClone = labelText.cloneNode(true);
+  // let option1Clone = option1.cloneNode("question-1-option-1");
+  // question_container.appendChild(option1Clone);
+  // labelTextClone.innerText = questions[0].options[1].value;
+  
+  
+  for (let i = 1; i < questions.length; i++) {
+    // let question_container_clone = question_container.cloneNode(true);
+    let question_text_clone = question_text.cloneNode(true);
+    question_text_clone.id = questions[i]?.id;
+    question_text_clone.innerText = questions[i]?.q;
+    question_container.appendChild(question_text_clone);
+    for (let j = 0; j < questions[i].options.length; j++) {
+      let option1Clone = option1.cloneNode(true);
+      option1Clone.name = i;
+      option1.id = questions[i].options[j].value;
+      option1.value = questions[i].options[j].value;
+      let labelTextClone = labelText.cloneNode(true);
+      labelTextClone.innerText = questions[i].options[j].value;
+      labelTextClone.for = i;
+      question_text_clone.appendChild(option1Clone);
+      question_text_clone.appendChild(labelTextClone);
+    }
+    question_container.appendChild(question_text_clone);
+    questions_container.appendChild(question_container);
+  
+  }
+  
+  
+
+
+
+  // question_text.innerText = questions[0].q;
+// question_text.id = questions[0].id;
+// option1.id = questions[0].options[0].id;
+// option1.name = questions[0].options[0].name;
+// option1.value = questions[0].options[0].value;
+// labelText.innerText = questions[0].options[0].value;
+
+// let option2 = option1.cloneNode(true);
+// option2.id = questions[0].options[1].id;
+// option2.name = questions[0].options[1].name;
+// option2.value = questions[0].options[1].value;
+// question_container.appendChild(option2);
+
+// let label_2_text = labelText.cloneNode(true);
+// label_2_text.innerText = questions[0].options[1].value;
+// question_container.appendChild(label_2_text);
+
+// let option3 = option1.cloneNode(true);
+// option3.id = questions[0].options[2].id;
+// option3.name = questions[0].options[2].name;
+// option3.value = questions[0].options[2].value;
+// question_container.appendChild(option3);
+
+// let label_3_text = labelText.cloneNode(true);
+// label_3_text.innerText = questions[0].options[2].value;
+// question_container.appendChild(label_3_text);
+
+// let option4 = option1.cloneNode(true);
+// option4.id = questions[0].options[3].id;
+// option4.name = questions[0].options[3].name;
+// option4.value = questions[0].options[3].value;
+// question_container.appendChild(option4);
+
+// let label_4_text = labelText.cloneNode(true);
+// label_4_text.innerText = questions[0].options[3].value;
+// console.log(labelText.innerText);
+// question_container.appendChild(label_4_text);
+
+// let labelTextClone = labelText.cloneNode(true);
+// let option1Clone = option1.cloneNode("question-1-option-1");
+// question_container.appendChild(option1Clone);
+// labelTextClone.innerText = questions[0].options[1].value;
