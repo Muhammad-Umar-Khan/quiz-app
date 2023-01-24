@@ -120,6 +120,7 @@ const questions = [
 ];
 
 let radiogroups_names = [
+  "Meta-CEO",
   "prime-minister",
   "computer-parts",
   "palindrom",
@@ -131,36 +132,60 @@ let radiogroups_names = [
   "land-of-thunder-bolts",
 ];
 
-// button.disabled = true;
-
 //selectors;
 
-let questions_container = document.getElementById("questions");
-let question_text = document.getElementById("question-text");
-let labelText = document.getElementById("label-1");
-const button = document.getElementById("submit_btn");
 const result = document.getElementById("result");
-let inputs = document.getElementsByTagName("input");
-let option1 = document.getElementById("question-1-option-01");
-
-console.log(option1);
-// let option2 = document.getElementById("question-1-option-02");
-// let option3 = document.getElementById("question-1-option-03");
-// let option4 = document.getElementById("question-1-option-04");
+const button = document.getElementById("submit_btn");
 
 //eventListeners;
-for (let input of inputs) {
-  input.addEventListener("click", checkAllSelected);
+
+function addEventToInput() {
+  for (let loop = 0; loop < 10; loop++) {
+    let inputElements = document.getElementsByName(radiogroups_names[loop]);
+    for (let element of inputElements)
+      element.addEventListener("click", checkAllSelected);
+  }
 }
-// option1.addEventListener("click", checkAllSelected);
-// option2.addEventListener("click", checkAllSelected);
-// option3.addEventListener("click", checkAllSelected);
-// option4.addEventListener("click", checkAllSelected);
 
 button.addEventListener("click", calculateScore);
 
+//functions;
+
+function initializeApp() {
+  let question_text = document.getElementById("question-text");
+  let option1 = document.getElementById("question-1-option-01");
+  let option2 = document.getElementById("question-1-option-02");
+  let option3 = document.getElementById("question-1-option-03");
+  let option4 = document.getElementById("question-1-option-04");
+  let label1 = document.getElementById("label-1");
+  let label2 = document.getElementById("label-2");
+  let label3 = document.getElementById("label-3");
+  let label4 = document.getElementById("label-4");
+  button.disabled = true;
+
+  question_text.innerText = questions[0].q;
+
+  option1.name = radiogroups_names[0];
+  option2.name = radiogroups_names[0];
+  option3.name = radiogroups_names[0];
+  option4.name = radiogroups_names[0];
+
+  option1.value = questions[0].options[0].value;
+  option2.value = questions[0].options[1].value;
+  option3.value = questions[0].options[2].value;
+  option4.value = questions[0].options[3].value;
+
+  label1.append(questions[0].options[0].value);
+  label2.append(questions[0].options[1].value);
+  label3.append(questions[0].options[2].value);
+  label4.append(questions[0].options[3].value);
+}
+
 function displayQuestionsAndOptions() {
-  for (let i = 0; i < questions.length; i++) {
+  let option1 = document.getElementById("question-1-option-01");
+  let labelText = document.getElementById("label-1");
+  let questions_container = document.getElementById("questions");
+  for (let i = 1; i < questions.length; i++) {
     let question = document.getElementById("question");
     let question_clone = question.cloneNode(true);
     question_clone.childNodes[1].innerText = questions[i].q;
@@ -171,23 +196,18 @@ function displayQuestionsAndOptions() {
       option1Clone.id = questions[i].options[j].value;
       option1Clone.value = questions[i].options[j].value;
       let labelTextClone = labelText.cloneNode(true);
-      labelTextClone.innerText = questions[i].options[j].value;
+      labelTextClone.innerText = "";
       labelTextClone.appendChild(option1Clone);
+      labelTextClone.append(questions[i].options[j].value);
       question_clone.appendChild(labelTextClone);
     }
   }
+  addEventToInput();
 }
-
-displayQuestionsAndOptions();
 
 function calculateScore() {
   let totalScore = 0;
-  let inputValues = document.getElementsByName("question-1-options");
-  for (let j = 0; j < inputValues.length; j++) {
-    if (inputValues[j].checked && inputValues[j].value === "Mark Zuckerberg")
-      totalScore += 1;
-  }
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 10; i++) {
     let allInputs = document.getElementsByName(radiogroups_names[i]);
     for (let k = 0; k < allInputs.length; k++) {
       if (
@@ -203,15 +223,7 @@ function calculateScore() {
 
 function checkAllSelected() {
   let totalCount = 0;
-  console.log("Total counts: ", totalCount);
-  let inputValues = document.getElementsByName("question-1-options");
-  for (let j = 0; j < inputValues.length; j++) {
-    if (inputValues[j].checked) {
-      totalCount = totalCount + 1;
-    }
-  }
-
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 10; i++) {
     let allInputs = document.getElementsByName(radiogroups_names[i]);
     for (let k = 0; k < allInputs.length; k++) {
       if (allInputs[k].checked) {
@@ -223,3 +235,6 @@ function checkAllSelected() {
     button.disabled = false;
   }
 }
+
+initializeApp();
+displayQuestionsAndOptions();
