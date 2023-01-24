@@ -4,62 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Quiz App</title>
   </head>
   <body>
     <main>
       <div id="questions">
         <div id="question">
-          <h1 id="question-text">Meta CEO is?</h1>
+          <h1 id="question-text"></h1>
         </div>
         <div id="options">
           <label id="label-1">
-            Mark Zuckerberg
             <input
               type="radio"
               name="question-1-options"
               id="question-1-option-01"
-              value="Mark Zuckerberg"
-              onclick="checkAllSelected()"
             />
           </label>
 
           <label id="label-2">
-            Elon Musk
             <input
               type="radio"
               name="question-1-options"
-              id="question-1-option-2"
-              value="Elon Musk"
-              onclick="checkAllSelected()"
+              id="question-1-option-02"
             />
           </label>
 
           <label id="label-3">
-            Jeff Bezos
             <input
               type="radio"
               name="question-1-options"
-              id="question-1-option-3"
-              value="Jeff Bezos"
-              onclick="checkAllSelected()"
+              id="question-1-option-03"
             />
           </label>
 
           <label id="label-4">
-            Tim Cook
             <input
               type="radio"
               name="question-1-options"
-              id="question-1-option-4"
-              value="Tim cook"
-              onclick="checkAllSelected()"
+              id="question-1-option-04"
             />
           </label>
         </div>
       </div>
-      <h1 id="result">""</h1>
-      <button id="submit_btn" onclick="calculateScore()">Submit</button>
+      <h1 id="result"></h1>
+      <button id="submit_btn">Submit</button>
     </main>
     <script src="index.js"></script>
   </body>

@@ -1,5 +1,16 @@
 const questions = [
   {
+    id: 1,
+    q: "Who is Meta CEO?",
+    options: [
+      { id: 1, name: "Mark Zuckerberg", value: "Mark Zuckerberg" },
+      { id: 2, name: "Elon Musk", value: "Elon Musk" },
+      { id: 3, name: "Jeff Bezos", value: "Jeff Bezos" },
+      { id: 4, name: "Tim Cook", value: "Tim Cook" },
+    ],
+    correctAnswer: "Mark Zuckerberg",
+  },
+  {
     id: 2,
     q: "Who is the current prime mister of pakistan?",
     options: [
@@ -120,34 +131,54 @@ let radiogroups_names = [
   "land-of-thunder-bolts",
 ];
 
+// button.disabled = true;
+
+//selectors;
+
 let questions_container = document.getElementById("questions");
 let question_text = document.getElementById("question-text");
-let option1 = document.getElementById("question-1-option-01");
 let labelText = document.getElementById("label-1");
+const button = document.getElementById("submit_btn");
+const result = document.getElementById("result");
+let inputs = document.getElementsByTagName("input");
+let option1 = document.getElementById("question-1-option-01");
 
-for (let i = 0; i < questions.length; i++) {
-  let question = document.getElementById("question");
-  let question_clone = question.cloneNode(true);
-  question_clone.childNodes[1].innerText = questions[i].q;
-  questions_container.appendChild(question_clone);
-  for (let j = 0; j < questions[i].options.length; j++) {
-    let option1Clone = option1.cloneNode(true);
-    option1Clone.name = radiogroups_names[i];
-    option1Clone.id = questions[i].options[j].value;
-    option1Clone.value = questions[i].options[j].value;
-    let labelTextClone = labelText.cloneNode(true);
-    labelTextClone.innerText = questions[i].options[j].value;
-    // labelTextClone.for = i;
-    labelTextClone.appendChild(option1Clone);
-    question_clone.appendChild(labelTextClone);
-    // question_clone.appendChild(option1Clone);
-    // question_clone.appendChild(labelTextClone);
+console.log(option1);
+// let option2 = document.getElementById("question-1-option-02");
+// let option3 = document.getElementById("question-1-option-03");
+// let option4 = document.getElementById("question-1-option-04");
+
+//eventListeners;
+for (let input of inputs) {
+  input.addEventListener("click", checkAllSelected);
+}
+// option1.addEventListener("click", checkAllSelected);
+// option2.addEventListener("click", checkAllSelected);
+// option3.addEventListener("click", checkAllSelected);
+// option4.addEventListener("click", checkAllSelected);
+
+button.addEventListener("click", calculateScore);
+
+function displayQuestionsAndOptions() {
+  for (let i = 0; i < questions.length; i++) {
+    let question = document.getElementById("question");
+    let question_clone = question.cloneNode(true);
+    question_clone.childNodes[1].innerText = questions[i].q;
+    questions_container.appendChild(question_clone);
+    for (let j = 0; j < questions[i].options.length; j++) {
+      let option1Clone = option1.cloneNode(true);
+      option1Clone.name = radiogroups_names[i];
+      option1Clone.id = questions[i].options[j].value;
+      option1Clone.value = questions[i].options[j].value;
+      let labelTextClone = labelText.cloneNode(true);
+      labelTextClone.innerText = questions[i].options[j].value;
+      labelTextClone.appendChild(option1Clone);
+      question_clone.appendChild(labelTextClone);
+    }
   }
 }
 
-const button = document.getElementById("submit_btn");
-const result = document.getElementById("result");
-button.disabled = true;
+displayQuestionsAndOptions();
 
 function calculateScore() {
   let totalScore = 0;
@@ -172,7 +203,7 @@ function calculateScore() {
 
 function checkAllSelected() {
   let totalCount = 0;
-
+  console.log("Total counts: ", totalCount);
   let inputValues = document.getElementsByName("question-1-options");
   for (let j = 0; j < inputValues.length; j++) {
     if (inputValues[j].checked) {
