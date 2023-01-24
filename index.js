@@ -137,7 +137,7 @@ for (let i = 0; i < questions.length; i++) {
     option1Clone.value = questions[i].options[j].value;
     let labelTextClone = labelText.cloneNode(true);
     labelTextClone.innerText = questions[i].options[j].value;
-    labelTextClone.for = i;
+    // labelTextClone.for = i;
     labelTextClone.appendChild(option1Clone);
     question_clone.appendChild(labelTextClone);
     // question_clone.appendChild(option1Clone);
@@ -165,7 +165,6 @@ function calculateScore() {
       ) {
         totalScore += 1;
       }
-      // }
     }
     result.innerText = `Your total score is ${totalScore}/10`;
   }
@@ -189,7 +188,6 @@ function checkAllSelected() {
       }
     }
   }
-  console.log("totalCoutn", totalCount);
   if (totalCount >= 10) {
     button.disabled = false;
   }
