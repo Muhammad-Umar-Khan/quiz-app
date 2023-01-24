@@ -207,7 +207,7 @@ function displayQuestionsAndOptions() {
 
 function calculateScore() {
   let totalScore = 0;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < questions.length; i++) {
     let allInputs = document.getElementsByName(radiogroups_names[i]);
     for (let k = 0; k < allInputs.length; k++) {
       if (
@@ -223,7 +223,7 @@ function calculateScore() {
 
 function checkAllSelected() {
   let totalCount = 0;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < questions.length; i++) {
     let allInputs = document.getElementsByName(radiogroups_names[i]);
     for (let k = 0; k < allInputs.length; k++) {
       if (allInputs[k].checked) {
